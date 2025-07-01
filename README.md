@@ -67,13 +67,13 @@ pip install moviepy imageio-ffmpeg beautifulsoup4 lxml
 2. Generate annotations from videos:
 
 ```bash
-python make_annotation.py --path ./data
+python preprocess/make_annotation.py --path ./data
 ```
 
 3. Extract frames from videos:
 
 ```bash
-python frame_crop.py --path ./data --category [category_name]
+python preprocess/frame_crop.py --path ./data --category [category_name]
 ```
 
 ### Training
@@ -82,49 +82,49 @@ python frame_crop.py --path ./data --category [category_name]
 
 ```bash
 # Custom CNN
-python bin_cnn.py
+python model/bin_cnn.py
 
 # ResNet-18
-python bin_res18.py
+python model/bin_res18.py
 
 # ResNet-50
-python bin_res50.py
+python model/bin_res50.py
 
 # EfficientNet-B0
-python bin_eff.py
+python model/bin_eff.py
 
 # Vision Transformer
-python bin_vit.py
+python model/bin_vit.py
 ```
 
 #### Multi-class Classification (Crime Type Classification)
 
 ```bash
 # Custom CNN
-python multi_cnn.py
+python model/multi_cnn.py
 
 # ResNet-18
-python multi_res18.py
+python model/multi_res18.py
 
 # ResNet-50
-python multi_res50.py
+python model/multi_res50.py
 
 # EfficientNet-B0
-python multi_eff.py
+python model/multi_eff.py
 
 # Vision Transformer
-python multi_vit.py
+python model/multi_vit.py
 ```
 
 ### Two-Stage Evaluation
 
 ```bash
 # Evaluate complete pipeline
-python bin_multi_cnn.py     # Custom CNN pipeline
-python bin_multi_res18.py   # ResNet-18 pipeline
-python bin_multi_res50.py   # ResNet-50 pipeline
-python bin_multi_eff.py     # EfficientNet pipeline
-python bin_multi_vit.py     # ViT pipeline
+python model/bin_multi_cnn.py     # Custom CNN pipeline
+python model/bin_multi_res18.py   # ResNet-18 pipeline
+python model/bin_multi_res50.py   # ResNet-50 pipeline
+python model/bin_multi_eff.py     # EfficientNet pipeline
+python model/bin_multi_vit.py     # ViT pipeline
 ```
 
 ## 📁 Project Structure
@@ -140,13 +140,15 @@ SSCED/
 │   │   ├── swoon_frame/
 │   │   └── normal_frame/
 │   └── videos/                   # Original video files
-├── datautils.py                  # Dataset classes and utilities
-├── make_annotation.py             # Annotation generation
-├── frame_crop.py                  # Frame extraction from videos
-├── video_crop.py                  # Video preprocessing
-├── bin_*.py                      # Binary classification training
-├── multi_*.py                    # Multi-class classification training
-├── bin_multi_*.py                # Two-stage pipeline evaluation
+├── preprocess/                   # Data preprocessing utilities
+│   ├── datautils.py             # Dataset classes and evaluation metrics
+│   ├── make_annotation.py       # Annotation generation from videos
+│   ├── frame_crop.py            # Frame extraction from videos
+│   └── video_crop.py            # Video preprocessing and cropping
+├── model/                       # Model training scripts
+│   ├── bin_*.py                 # Binary classification training
+│   ├── multi_*.py               # Multi-class classification training
+│   └── bin_multi_*.py           # Two-stage pipeline evaluation
 └── README.md
 ```
 
@@ -179,7 +181,7 @@ Performance varies by model architecture, with traditional CNNs showing robust r
 
 ## 🛠️ Custom Dataset Classes
 
-The project includes specialized dataset classes for different training scenarios:
+The project includes specialized dataset classes in `preprocess/datautils.py` for different training scenarios:
 
 - `CCTVDataset`: Complete dataset loader
 - `CrimeDataset`: Crime-only samples (excludes normal scenes)
@@ -204,22 +206,6 @@ The system provides comprehensive evaluation through:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📚 Citation
-
-If you use this work in your research, please cite:
-
-```bibtex
-@article{ssced2024,
-  title={SSCED: Single-Shot Crime Event Detector with Multi-View Surveillance Image Dataset},
-  author={[Your Name]},
-  journal={[Journal Name]},
-  year={2024}
-}
-```
 
 ## 🙏 Acknowledgments
 
