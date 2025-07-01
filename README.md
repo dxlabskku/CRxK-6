@@ -1,4 +1,4 @@
-# SSCED: Single-Shot Crime Event Detector
+# CRxK Dataset (Single-Shot Crime Event Detector)
 
 A comprehensive deep learning framework for detecting and classifying criminal activities in surveillance footage using a two-stage hierarchical classification approach.
 
