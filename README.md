@@ -4,7 +4,7 @@ A comprehensive deep learning framework for detecting and classifying criminal a
 
 ## 🎯 Overview
 
-SSCED introduces a novel benchmark dataset consisting of crime event-based surveillance images with well-informed annotations. The system implements a two-stage classification pipeline that first detects whether criminal activity is occurring, then classifies the specific type of crime.
+CRxK is a novel benchmark dataset consisting of crime event-based surveillance images with well-informed annotations. The system implements a two-stage classification pipeline that first detects whether criminal activity is occurring, then classifies the specific type of crime.
 
 ### Key Features
 
